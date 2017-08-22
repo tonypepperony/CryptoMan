@@ -8,5 +8,5 @@ import ru.tonyappl.cryptoman.models.USDCourse;
 
 public interface CourseService {
     @GET("v1/ticker/")
-    Call<List<USDCourse>> getUSDCourses();
+    Call<USDCourse> getUSDCourses();
 }

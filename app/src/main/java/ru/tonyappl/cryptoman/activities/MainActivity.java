@@ -1,7 +1,9 @@
-package ru.tonyappl.cryptoman;
+package ru.tonyappl.cryptoman.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import ru.tonyappl.cryptoman.R;
 
 public class MainActivity extends AppCompatActivity {
 

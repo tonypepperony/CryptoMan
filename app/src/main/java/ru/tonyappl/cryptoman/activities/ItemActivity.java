@@ -31,6 +31,8 @@ public class ItemActivity extends AppCompatActivity {
     private TextView textView20;
     private TextView textView21;
     private TextView textView22;
+    private TextView textView23;
+    private TextView textView24;
     private int id;
 
     @Override
@@ -66,6 +68,8 @@ public class ItemActivity extends AppCompatActivity {
         textView20 = (TextView) findViewById(R.id.textView20);
         textView21 = (TextView) findViewById(R.id.textView21);
         textView22 = (TextView) findViewById(R.id.textView22);
+        textView23 = (TextView) findViewById(R.id.textView23);
+        textView24 = (TextView) findViewById(R.id.textView24);
     }
 
     public int getId() {

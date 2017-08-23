@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
     private void fillCourses(){
         List<Value> resultValues = new ArrayList<>();
         for (Value vl : values){
-            resultValues.add(new Value(vl.getId(), vl.getName(), vl.getSymbol(), vl.getPriceUsd()));
+            resultValues.add(new Value(vl.getId(), vl.getName(), vl.getSymbol(), vl.getRank(), vl.getPriceUsd(), vl.getPriceBtc(), vl.getMarketCapUsd(), vl.getPercentChange1h(), vl.getPercentChange24h(), vl.getPercentChange7d()));
             final MainActivity.Adapter adapter = new MainActivity.Adapter(resultValues);
             recyclerView.setAdapter(adapter);
         }

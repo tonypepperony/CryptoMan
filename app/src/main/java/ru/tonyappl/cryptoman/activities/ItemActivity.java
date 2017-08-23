@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import ru.tonyappl.cryptoman.R;
+import ru.tonyappl.cryptoman.models.Value;
 
 public class ItemActivity extends AppCompatActivity {
     private ImageView imageView2;
@@ -40,8 +43,18 @@ public class ItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
         init();
-        setId(getIntent().getExtras().getInt("itemPosition"));
-        textView.setText(""+id);
+        //setId(getIntent().getExtras().getInt("itemPosition"));
+        textView.setText(getIntent().getStringExtra("name"));
+        textView3.setText(getIntent().getStringExtra("rank"));
+        textView5.setText(getIntent().getStringExtra("symbol"));
+        textView7.setText(getIntent().getStringExtra("priceUsd"));
+        textView23.setText(getIntent().getStringExtra("priceBtc"));
+        textView10.setText(getIntent().getStringExtra("marketCapUsd"));
+        textView12.setText(getIntent().getStringExtra("availableSupply"));
+        textView14.setText(getIntent().getStringExtra("percentChange1h"));
+        textView18.setText(getIntent().getStringExtra("percentChange24h"));
+        textView21.setText(getIntent().getStringExtra("percentChange7d"));
+
     }
 
     private void init() {

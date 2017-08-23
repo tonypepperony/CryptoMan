@@ -37,13 +37,13 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="rate#" />
+            android:text="@string/rank" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1" />
+            android:text="@string/_1" />
 
     </LinearLayout>
 
@@ -58,35 +58,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:text="1" />
+            android:text="@string/_1" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:text="BTC" />
+            android:text="@string/btc" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:text=" = " />
+            android:text="@string/equal" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:text="4243.04" />
+            android:text="@string/empty" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:text=" USD" />
+            android:text="@string/usd" />
     </LinearLayout>
 
     <LinearLayout
@@ -100,14 +100,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="4243.04" />
+            android:text="@string/empty" />
 
         <TextView
             android:id="@+id/textView24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text=" BTC" />
+            android:text="@string/btc" />
     </LinearLayout>
 
     <LinearLayout
@@ -119,14 +119,14 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Market Cap " />
+            android:text="@string/market_cap" />
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="69,988,950,103" />
+            android:text="@string/empty" />
     </LinearLayout>
 
     <LinearLayout
@@ -138,19 +138,19 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Circulating Supply " />
+            android:text="@string/circulating_supply" />
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="16,522,025" />
+            android:text="@string/empty" />
 
         <TextView
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" BTC" />
+            android:text="@string/btc" />
     </LinearLayout>
 
     <LinearLayout
@@ -162,19 +162,19 @@
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="%Change (1h) " />
+            android:text="@string/change_1h" />
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0,33" />
+            android:text="@string/empty" />
 
         <TextView
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="%" />
+            android:text="@string/percent" />
     </LinearLayout>
 
     <LinearLayout
@@ -186,19 +186,19 @@
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="%Change (24h) " />
+            android:text="@string/change_24h" />
 
         <TextView
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6,54" />
+            android:text="@string/empty" />
 
         <TextView
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="%" />
+            android:text="@string/percent" />
     </LinearLayout>
 
     <LinearLayout
@@ -210,19 +210,19 @@
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="%Change (7d) " />
+            android:text="@string/change_7d" />
 
         <TextView
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-0,28" />
+            android:text="@string/empty" />
 
         <TextView
             android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="%" />
+            android:text="@string/percent" />
     </LinearLayout>
 
 </LinearLayout>

@@ -1,16 +1,28 @@
 package ru.tonyappl.cryptoman.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Value {
-    private int id;
+    private String id;
     private String name;
     private String symbol;
-    private double price_usd;
 
-    public int getId() {
+    @SerializedName("price_usd")
+    private String priceUsd;
+
+    public Value(String id, String name, String symbol, String priceUsd) {
+        this.id = id;
+        this.name = name;
+        this.symbol = symbol;
+        this.priceUsd = priceUsd;
+    }
+
+    public String getId() {
+
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -30,11 +42,11 @@ public class Value {
         this.symbol = symbol;
     }
 
-    public double getPrice_usd() {
-        return price_usd;
+    public String getPriceUsd() {
+        return priceUsd;
     }
 
-    public void setPrice_usd(double price_usd) {
-        this.price_usd = price_usd;
+    public void setPriceUsd(String priceUsd) {
+        this.priceUsd = priceUsd;
     }
 }

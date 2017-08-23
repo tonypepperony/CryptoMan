@@ -1,7 +1,6 @@
 package ru.tonyappl.cryptoman.activities;
 
 import android.app.ProgressDialog;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,11 +21,11 @@ import retrofit2.Response;
 import ru.tonyappl.cryptoman.R;
 import ru.tonyappl.cryptoman.api.ApiFactory;
 import ru.tonyappl.cryptoman.api.CourseService;
-import ru.tonyappl.cryptoman.models.USDCourse;
+import ru.tonyappl.cryptoman.models.Value;
 
 public class MainActivity extends AppCompatActivity {
     private CourseService courseService;
-    private USDCourse usdCourse;
+    private List<Value> values;
     private RecyclerView recyclerView;
     private ProgressDialog loadingDialog;
 
@@ -40,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
         loadingDialog = ProgressDialog.show(this, "", getString(R.string.loading), true);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+
 
         downloadCourses();
 
@@ -61,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
 
     //Создаем адаптер
     class Adapter extends RecyclerView.Adapter<MainActivity.ViewHolder>{
-        private List<Result> results;
+        private List<Value> values;
 
-        public Adapter(List<Result> results) {
-            this.results = results;
+        public Adapter(List<Value> values) {
+            this.values = values;
         }
 
         @Override
@@ -76,52 +78,37 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(MainActivity.ViewHolder holder, int position) {
-            String name = results.get(position).getName();
-            String symbol = results.get(position).getSymbol();
-            holder.textViewName.setText(name);
-            holder.textViewSymbol.setText(symbol);
+            String name = values.get(position).getName();
+            TextView textViewName = holder.textViewName;
+            textViewName.setText(name);
+
+            String symbol = values.get(position).getSymbol();
+            TextView textViewSymbol = holder.textViewSymbol;
+            textViewSymbol.setText(symbol);
         }
 
         @Override
         public int getItemCount() {
-            return results.size();
-        }
-    }
-
-    public class Result{
-        private String name;
-        private String symbol;
-
-        public Result(String name, String symbol) {
-            this.name = name;
-            this.symbol = symbol;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public String getSymbol() {
-            return symbol;
+            return values.size();
         }
     }
 
     private void downloadCourses() {
         // Создаем экземпляр запроса со всем необходимыми настройками
-        Call<USDCourse> call = courseService.getUSDCourses();
+        Call<List<Value>> call = courseService.getUSDCourses();
 
         // Отображаем progress bar
         loadingDialog.show();
 
         // Выполняем запрос асинхронно
-        call.enqueue(new Callback<USDCourse>() {
+        call.enqueue(new Callback<List<Value>>() {
 
             // В случае если запрос выполнился успешно, то мы переходим в метод onResponse(...)
             @Override
-            public void onResponse(Call<USDCourse> call, Response<USDCourse> response) {
+            public void onResponse(Call<List<Value>> call, Response<List<Value>> response) {
                 if (response.isSuccessful()) {
                     // Если в ответ нам пришел код 2xx, то отображаем содержимое запроса
-                    usdCourse = response.body();
+                    values = response.body();
                     fillCourses();
                 } else {
                     // Если пришел код ошибки, то обрабатываем её
@@ -133,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<USDCourse> call, Throwable t) {
+            public void onFailure(Call<List<Value>> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Ошибочка2", Toast.LENGTH_SHORT).show();
                 Log.d("Error", t.getMessage());
             }
@@ -142,11 +129,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fillCourses(){
-        List<Result> resultList = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            resultList.add(new Result(usdCourse.getValue().get(i).getName(), usdCourse.getValue().get(i).getSymbol()));
-            final MainActivity.Adapter adapter = new MainActivity.Adapter(resultList);
+        List<Value> resultValues = new ArrayList<>();
+//        for (int i = 0; i < 30; i++) {
+//            resultList.add(new Result(usdCourse.getValue().get(i).getName(), usdCourse.getValue().get(i).getSymbol()));
+//            final MainActivity.Adapter adapter = new MainActivity.Adapter(resultList);
+//            recyclerView.setAdapter(adapter);
+//        }
+        for (Value vl : values){
+            resultValues.add(new Value(vl.getId(), vl.getName(), vl.getSymbol(), vl.getPriceUsd()));
+            final MainActivity.Adapter adapter = new MainActivity.Adapter(resultValues);
             recyclerView.setAdapter(adapter);
         }
+
     }
 }

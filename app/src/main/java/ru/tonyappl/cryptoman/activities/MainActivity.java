@@ -65,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
     //Создаем адаптер
     private class Adapter extends RecyclerView.Adapter<MainActivity.ViewHolder>{
         private List<Value> values;
+        //Создаем обработчик нажатий на список
+        private final View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = recyclerView.getChildLayoutPosition(view);
+                String item = values.get(position).getName();
+                    Toast.makeText(MainActivity.this, item, Toast.LENGTH_LONG).show();
+            }
+        };
 
         Adapter(List<Value> values) {
             this.values = values;
@@ -74,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         public MainActivity.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
             View rowView = layoutInflater.inflate(R.layout.main_rows, parent, false);
+            rowView.setOnClickListener(onClickListener);
             return new MainActivity.ViewHolder(rowView);
         }
 
@@ -131,11 +141,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillCourses(){
         List<Value> resultValues = new ArrayList<>();
-//        for (int i = 0; i < 30; i++) {
-//            resultList.add(new Result(usdCourse.getValue().get(i).getName(), usdCourse.getValue().get(i).getSymbol()));
-//            final MainActivity.Adapter adapter = new MainActivity.Adapter(resultList);
-//            recyclerView.setAdapter(adapter);
-//        }
         for (Value vl : values){
             resultValues.add(new Value(vl.getId(), vl.getName(), vl.getSymbol(), vl.getPriceUsd()));
             final MainActivity.Adapter adapter = new MainActivity.Adapter(resultValues);

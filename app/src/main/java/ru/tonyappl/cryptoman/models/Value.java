@@ -49,4 +49,6 @@ public class Value {
     public void setPriceUsd(String priceUsd) {
         this.priceUsd = priceUsd;
     }
+
+
 }

@@ -72,9 +72,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int position = recyclerView.getChildLayoutPosition(view);
                 String item = values.get(position).getName();
-                    Toast.makeText(MainActivity.this, item, Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, ""+position, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, ItemActivity.class);
-                intent.putExtra("id", values.get(position).getId());
+                intent.putExtra("itemPosition", position);
                 startActivity(intent);
             }
         };

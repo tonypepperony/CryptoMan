@@ -31,13 +31,15 @@ public class ItemActivity extends AppCompatActivity {
     private TextView textView20;
     private TextView textView21;
     private TextView textView22;
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
         init();
-        textView.setText(getIntent().getStringExtra("id"));
+        setId(getIntent().getExtras().getInt("itemPosition"));
+        textView.setText(""+id);
     }
 
     private void init() {
@@ -64,5 +66,13 @@ public class ItemActivity extends AppCompatActivity {
         textView20 = (TextView) findViewById(R.id.textView20);
         textView21 = (TextView) findViewById(R.id.textView21);
         textView22 = (TextView) findViewById(R.id.textView22);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

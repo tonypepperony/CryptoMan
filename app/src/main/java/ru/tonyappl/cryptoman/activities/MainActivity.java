@@ -50,14 +50,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Создаем вьюхолдер
-    class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView textViewName;
         public TextView textViewSymbol;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textViewName = (TextView) findViewById(R.id.tvName);
-            textViewSymbol = (TextView) findViewById(R.id.tvSymbol);
+            textViewName = (TextView) itemView.findViewById(R.id.tvName);
+            textViewSymbol = (TextView) itemView.findViewById(R.id.tvSymbol);
         }
     }
 

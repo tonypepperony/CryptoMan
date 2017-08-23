@@ -17,6 +17,9 @@ public class Value {
     @SerializedName("market_cap_usd")
     private String marketCapUsd;
 
+    @SerializedName("available_supply")
+    private String availableSupply;
+
     @SerializedName("percent_change_1h")
     private String percentChange1h;
 
@@ -26,7 +29,7 @@ public class Value {
     @SerializedName("percent_change_7d")
     private String percentChange7d;
 
-    public Value(String id, String name, String symbol, String rank, String priceUsd, String priceBtc, String marketCapUsd, String percentChange1h, String percentChange24h, String percentChange7d) {
+    public Value(String id, String name, String symbol, String rank, String priceUsd, String priceBtc, String marketCapUsd, String availableSupply, String percentChange1h, String percentChange24h, String percentChange7d) {
         this.id = id;
         this.name = name;
         this.symbol = symbol;
@@ -34,6 +37,7 @@ public class Value {
         this.priceUsd = priceUsd;
         this.priceBtc = priceBtc;
         this.marketCapUsd = marketCapUsd;
+        this.availableSupply = availableSupply;
         this.percentChange1h = percentChange1h;
         this.percentChange24h = percentChange24h;
         this.percentChange7d = percentChange7d;
@@ -117,5 +121,13 @@ public class Value {
 
     public void setPercentChange7d(String percentChange7d) {
         this.percentChange7d = percentChange7d;
+    }
+
+    public String getAvailableSupply() {
+        return availableSupply;
+    }
+
+    public void setAvailableSupply(String availableSupply) {
+        this.availableSupply = availableSupply;
     }
 }

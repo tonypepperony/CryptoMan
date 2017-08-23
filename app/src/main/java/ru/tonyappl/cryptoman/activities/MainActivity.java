@@ -74,7 +74,16 @@ public class MainActivity extends AppCompatActivity {
                 String item = values.get(position).getName();
                     Toast.makeText(MainActivity.this, ""+position, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, ItemActivity.class);
-                intent.putExtra("itemPosition", position);
+                intent.putExtra("id", values.get(position).getId());
+                intent.putExtra("name", values.get(position).getName());
+                intent.putExtra("rank", values.get(position).getRank());
+                intent.putExtra("priceUsd", values.get(position).getPriceUsd());
+                intent.putExtra("priceBtc", values.get(position).getPriceBtc());
+                intent.putExtra("marketCapUsd", values.get(position).getMarketCapUsd());
+                intent.putExtra("availableSupply", values.get(position).getAvailableSupply());
+                intent.putExtra("percentChange1h", values.get(position).getPercentChange1h());
+                intent.putExtra("percentChange24h", values.get(position).getPercentChange24h());
+                intent.putExtra("percentChange7d", values.get(position).getPercentChange7d());
                 startActivity(intent);
             }
         };
@@ -127,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                     fillCourses();
                 } else {
                     // Если пришел код ошибки, то обрабатываем её
-                    Toast.makeText(MainActivity.this, "Ошибочка 1", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 }
 
                 // Скрываем progress bar
@@ -136,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(@NonNull Call<List<Value>> call, @NonNull Throwable t) {
-                Toast.makeText(MainActivity.this, "Ошибочка2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "invalid downloading", Toast.LENGTH_SHORT).show();
                 Log.d("Error", t.getMessage());
             }
 
@@ -146,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
     private void fillCourses(){
         List<Value> resultValues = new ArrayList<>();
         for (Value vl : values){
-            resultValues.add(new Value(vl.getId(), vl.getName(), vl.getSymbol(), vl.getRank(), vl.getPriceUsd(), vl.getPriceBtc(), vl.getMarketCapUsd(), vl.getPercentChange1h(), vl.getPercentChange24h(), vl.getPercentChange7d()));
+            resultValues.add(new Value(vl.getId(), vl.getName(), vl.getSymbol(), vl.getRank(), vl.getPriceUsd(), vl.getPriceBtc(), vl.getMarketCapUsd(), vl.getAvailableSupply(), vl.getPercentChange1h(), vl.getPercentChange24h(), vl.getPercentChange7d()));
             final MainActivity.Adapter adapter = new MainActivity.Adapter(resultValues);
             recyclerView.setAdapter(adapter);
         }

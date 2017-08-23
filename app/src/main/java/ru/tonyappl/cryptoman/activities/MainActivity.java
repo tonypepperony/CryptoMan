@@ -1,6 +1,7 @@
 package ru.tonyappl.cryptoman.activities;
 
 import android.app.ProgressDialog;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -50,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Создаем вьюхолдер
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView textViewName;
-        public TextView textViewSymbol;
+    class ViewHolder extends RecyclerView.ViewHolder{
+        TextView textViewName;
+        TextView textViewSymbol;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             textViewName = (TextView) itemView.findViewById(R.id.tvName);
             textViewSymbol = (TextView) itemView.findViewById(R.id.tvSymbol);
@@ -62,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Создаем адаптер
-    class Adapter extends RecyclerView.Adapter<MainActivity.ViewHolder>{
+    private class Adapter extends RecyclerView.Adapter<MainActivity.ViewHolder>{
         private List<Value> values;
 
-        public Adapter(List<Value> values) {
+        Adapter(List<Value> values) {
             this.values = values;
         }
 
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
             // В случае если запрос выполнился успешно, то мы переходим в метод onResponse(...)
             @Override
-            public void onResponse(Call<List<Value>> call, Response<List<Value>> response) {
+            public void onResponse(@NonNull Call<List<Value>> call, @NonNull Response<List<Value>> response) {
                 if (response.isSuccessful()) {
                     // Если в ответ нам пришел код 2xx, то отображаем содержимое запроса
                     values = response.body();
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Value>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Value>> call, @NonNull Throwable t) {
                 Toast.makeText(MainActivity.this, "Ошибочка2", Toast.LENGTH_SHORT).show();
                 Log.d("Error", t.getMessage());
             }

@@ -1,6 +1,7 @@
 package ru.tonyappl.cryptoman.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 int position = recyclerView.getChildLayoutPosition(view);
                 String item = values.get(position).getName();
                     Toast.makeText(MainActivity.this, item, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, ItemActivity.class);
+                intent.putExtra("id", values.get(position).getId());
+                startActivity(intent);
             }
         };
 

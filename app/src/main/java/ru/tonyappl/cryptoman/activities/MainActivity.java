@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("id", values.get(position).getId());
                 intent.putExtra("name", values.get(position).getName());
                 intent.putExtra("rank", values.get(position).getRank());
+                intent.putExtra("symbol", values.get(position).getSymbol());
                 intent.putExtra("priceUsd", values.get(position).getPriceUsd());
                 intent.putExtra("priceBtc", values.get(position).getPriceBtc());
                 intent.putExtra("marketCapUsd", values.get(position).getMarketCapUsd());

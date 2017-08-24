@@ -11,7 +11,7 @@ import ru.tonyappl.cryptoman.R;
 import ru.tonyappl.cryptoman.models.Value;
 
 public class ItemActivity extends AppCompatActivity {
-    private ImageView imageView2;
+    private ImageView itemImageView;
     private TextView textView;
     private TextView textView2;
     private TextView textView3;
@@ -58,7 +58,7 @@ public class ItemActivity extends AppCompatActivity {
     }
 
     private void init() {
-        imageView2 = (ImageView) findViewById(R.id.imageView2);
+        itemImageView = (ImageView) findViewById(R.id.itemImageView);
         textView = (TextView) findViewById(R.id.textView);
         textView2 = (TextView) findViewById(R.id.textView2);
         textView3 = (TextView) findViewById(R.id.textView3);

@@ -16,4 +16,6 @@
     <string name="percent">%</string>
     <string name="change_24h">%Change (24h)</string>
     <string name="change_7d">%Change (7d)</string>
+    <string name="course">Course</string>
+    <string name="_11111">11111</string>
 </resources>

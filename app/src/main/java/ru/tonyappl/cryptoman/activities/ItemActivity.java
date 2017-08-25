@@ -2,7 +2,10 @@ package ru.tonyappl.cryptoman.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import ru.tonyappl.cryptoman.R;
 
@@ -16,6 +19,7 @@ public class ItemActivity extends AppCompatActivity {
     private TextView textViewChange24h;
     private TextView textViewChange7d;
     private TextView textViewOnBTC;
+    private ImageView imageViewItem;
     private int id;
 
     @Override
@@ -39,6 +43,7 @@ public class ItemActivity extends AppCompatActivity {
         textViewMarketCap.setText("Market Cap $" + getIntent().getStringExtra("marketCapUsd"));
         textViewCS.setText("Circulating Supply " + getIntent().getStringExtra("availableSupply") + " " + getIntent().getStringExtra("symbol"));
         textViewOnBTC.setText(getIntent().getStringExtra("symbol") + "-BTC = " + getIntent().getStringExtra("priceBtc") + " BTC");
+        Picasso.with(ItemActivity.this).load(getIntent().getStringExtra("image")).into(imageViewItem);
     }
 
     private String checkSign(String extra) {
@@ -69,6 +74,7 @@ public class ItemActivity extends AppCompatActivity {
         textViewChange24h = (TextView) findViewById(R.id.textViewChange24h);
         textViewChange7d = (TextView) findViewById(R.id.textViewChange7d);
         textViewOnBTC = (TextView) findViewById(R.id.textViewOnBTC);
+        imageViewItem = (ImageView) findViewById(R.id.imageViewItem);
     }
 
     public int getId() {

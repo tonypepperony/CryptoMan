@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("percentChange1h", values.get(position).getPercentChange1h());
                 intent.putExtra("percentChange24h", values.get(position).getPercentChange24h());
                 intent.putExtra("percentChange7d", values.get(position).getPercentChange7d());
+                intent.putExtra("image", values.get(position).getImageUrl());
                 startActivity(intent);
             }
         };

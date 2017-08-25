@@ -1,7 +1,10 @@
 package ru.tonyappl.cryptoman.activities;
 
+import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,9 +33,12 @@ public class ItemActivity extends AppCompatActivity {
 
         textViewName.setText(getIntent().getStringExtra("name"));
 
+        final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.mipmap.back);
 
-
-        textViewCourse.setText("1 " + getIntent().getStringExtra("symbol") + " = " + getIntent().getStringExtra("priceUsd") + " USD");
+        textViewCourse.setText(" 1 " + getIntent().getStringExtra("symbol") + " = " + getIntent().getStringExtra("priceUsd") + " USD ");
         textViewRank.setText("Rank #" + getIntent().getStringExtra("rank"));
         textViewChange1h.setText(checkSign("percentChange1h") + getIntent().getStringExtra("percentChange1h") + "%");
         setColorTv("percentChange1h", textViewChange1h);
@@ -44,6 +50,20 @@ public class ItemActivity extends AppCompatActivity {
         textViewCS.setText("Circulating Supply " + getIntent().getStringExtra("availableSupply") + " " + getIntent().getStringExtra("symbol"));
         textViewOnBTC.setText(getIntent().getStringExtra("symbol") + "-BTC = " + getIntent().getStringExtra("priceBtc") + " BTC");
         Picasso.with(ItemActivity.this).load(getIntent().getStringExtra("image")).into(imageViewItem);
+        actionBar.setTitle(getIntent().getStringExtra("name"));
+    }
+
+    //Обрабатываем нажатие кнопки назад
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private String checkSign(String extra) {
@@ -84,4 +104,6 @@ public class ItemActivity extends AppCompatActivity {
     public void setId(int id) {
         this.id = id;
     }
+
+
 }

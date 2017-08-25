@@ -127,7 +127,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -136,6 +136,7 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:gravity="center"
+            android:textColor="@color/colorBlack"
             android:text="@string/_name" />
     </LinearLayout>
 

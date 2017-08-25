@@ -1,24 +1,21 @@
 package ru.tonyappl.cryptoman.activities;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import ru.tonyappl.cryptoman.R;
 
 public class ItemActivity extends AppCompatActivity {
-    private ImageView itemImageView;
-    private TextView textView;
-    private TextView textView2;
-    private TextView textView4;
-    private TextView textView9;
-    private TextView textView11;
-    private TextView textView14;
-    private TextView textView18;
-    private TextView textView21;
-    private TextView textView23;
+    private TextView textViewName;
+    private TextView textViewRank;
+    private TextView textViewCourse;
+    private TextView textViewMarketCap;
+    private TextView textViewCS;
+    private TextView textViewChange1h;
+    private TextView textViewChange24h;
+    private TextView textViewChange7d;
+    private TextView textViewOnBTC;
     private int id;
 
     @Override
@@ -27,25 +24,25 @@ public class ItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_item);
         init();
 
-        textView.setText(getIntent().getStringExtra("name"));
+        textViewName.setText(getIntent().getStringExtra("name"));
 
 
 
-        textView4.setText("1 " + getIntent().getStringExtra("symbol") + " = " + getIntent().getStringExtra("priceUsd") + " USD");
-        textView2.setText("Rank #" + getIntent().getStringExtra("rank"));
-        textView14.setText(checkSign("percentChange1h") + getIntent().getStringExtra("percentChange1h") + "%");
-        setColorTv("percentChange1h", textView14);
-        textView18.setText(checkSign("percentChange24h") + getIntent().getStringExtra("percentChange24h") + "%");
-        setColorTv("percentChange24h", textView18);
-        textView21.setText(checkSign("percentChange7d") + getIntent().getStringExtra("percentChange7d") + "%");
-        setColorTv("percentChange7d", textView21);
-        textView9.setText("Market Cap $" + getIntent().getStringExtra("marketCapUsd"));
-        textView11.setText("Circulating Supply " + getIntent().getStringExtra("availableSupply") + " " + getIntent().getStringExtra("symbol"));
-        textView23.setText(getIntent().getStringExtra("symbol") + "-BTC = " + getIntent().getStringExtra("priceBtc") + " BTC");
+        textViewCourse.setText("1 " + getIntent().getStringExtra("symbol") + " = " + getIntent().getStringExtra("priceUsd") + " USD");
+        textViewRank.setText("Rank #" + getIntent().getStringExtra("rank"));
+        textViewChange1h.setText(checkSign("percentChange1h") + getIntent().getStringExtra("percentChange1h") + "%");
+        setColorTv("percentChange1h", textViewChange1h);
+        textViewChange24h.setText(checkSign("percentChange24h") + getIntent().getStringExtra("percentChange24h") + "%");
+        setColorTv("percentChange24h", textViewChange24h);
+        textViewChange7d.setText(checkSign("percentChange7d") + getIntent().getStringExtra("percentChange7d") + "%");
+        setColorTv("percentChange7d", textViewChange7d);
+        textViewMarketCap.setText("Market Cap $" + getIntent().getStringExtra("marketCapUsd"));
+        textViewCS.setText("Circulating Supply " + getIntent().getStringExtra("availableSupply") + " " + getIntent().getStringExtra("symbol"));
+        textViewOnBTC.setText(getIntent().getStringExtra("symbol") + "-BTC = " + getIntent().getStringExtra("priceBtc") + " BTC");
     }
 
     private String checkSign(String extra) {
-        String sign = " ";
+        String sign;
         if (Double.parseDouble(getIntent().getStringExtra(extra)) > 0.0){
             sign = "+";
             } else {
@@ -63,16 +60,15 @@ public class ItemActivity extends AppCompatActivity {
     }
 
     private void init() {
-        itemImageView = (ImageView) findViewById(R.id.itemImageView);
-        textView = (TextView) findViewById(R.id.textView);
-        textView2 = (TextView) findViewById(R.id.textViewRank);
-        textView4 = (TextView) findViewById(R.id.textViewCourse);
-        textView9 = (TextView) findViewById(R.id.textViewMarketCap);
-        textView11 = (TextView) findViewById(R.id.textViewCS);
-        textView14 = (TextView) findViewById(R.id.textViewChange1h);
-        textView18 = (TextView) findViewById(R.id.textViewChange24h);
-        textView21 = (TextView) findViewById(R.id.textViewChange7d);
-        textView23 = (TextView) findViewById(R.id.textViewOnBTC);
+        textViewName = (TextView) findViewById(R.id.textViewName);
+        textViewRank = (TextView) findViewById(R.id.textViewRank);
+        textViewCourse = (TextView) findViewById(R.id.textViewCourse);
+        textViewMarketCap = (TextView) findViewById(R.id.textViewMarketCap);
+        textViewCS = (TextView) findViewById(R.id.textViewCS);
+        textViewChange1h = (TextView) findViewById(R.id.textViewChange1h);
+        textViewChange24h = (TextView) findViewById(R.id.textViewChange24h);
+        textViewChange7d = (TextView) findViewById(R.id.textViewChange7d);
+        textViewOnBTC = (TextView) findViewById(R.id.textViewOnBTC);
     }
 
     public int getId() {

@@ -12,28 +12,13 @@ public class ItemActivity extends AppCompatActivity {
     private ImageView itemImageView;
     private TextView textView;
     private TextView textView2;
-    private TextView textView3;
     private TextView textView4;
-    private TextView textView5;
-    private TextView textView6;
-    private TextView textView7;
-    private TextView textView8;
     private TextView textView9;
-    private TextView textView10;
     private TextView textView11;
-    private TextView textView12;
-    private TextView textView13;
     private TextView textView14;
-    private TextView textView15;
-    private TextView textView16;
-    private TextView textView17;
     private TextView textView18;
-    private TextView textView19;
-    private TextView textView20;
     private TextView textView21;
-    private TextView textView22;
     private TextView textView23;
-    private TextView textView24;
     private int id;
 
     @Override

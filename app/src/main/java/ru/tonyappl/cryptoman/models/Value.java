@@ -66,79 +66,40 @@ public class Value {
         return symbol;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
     public String getRank() {
         return rank;
-    }
-
-    public void setRank(String rank) {
-        this.rank = rank;
     }
 
     public String getPriceUsd() {
         return priceUsd;
     }
 
-    public void setPriceUsd(String priceUsd) {
-        this.priceUsd = priceUsd;
-    }
-
     public String getPriceBtc() {
         return priceBtc;
-    }
-
-    public void setPriceBtc(String priceBtc) {
-        this.priceBtc = priceBtc;
     }
 
     public String getMarketCapUsd() {
         return marketCapUsd;
     }
 
-    public void setMarketCapUsd(String marketCapUsd) {
-        this.marketCapUsd = marketCapUsd;
-    }
-
     public String getPercentChange1h() {
         return percentChange1h;
-    }
-
-    public void setPercentChange1h(String percentChange1h) {
-        this.percentChange1h = percentChange1h;
     }
 
     public String getPercentChange24h() {
         return percentChange24h;
     }
 
-    public void setPercentChange24h(String percentChange24h) {
-        this.percentChange24h = percentChange24h;
-    }
-
     public String getPercentChange7d() {
         return percentChange7d;
-    }
-
-    public void setPercentChange7d(String percentChange7d) {
-        this.percentChange7d = percentChange7d;
     }
 
     public String getAvailableSupply() {
         return availableSupply;
     }
 
-    public void setAvailableSupply(String availableSupply) {
-        this.availableSupply = availableSupply;
-    }
-
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
 }

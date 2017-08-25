@@ -12,10 +12,11 @@
     <string name="usd"> USD</string>
     <string name="market_cap">Market Cap</string>
     <string name="circulating_supply">Circulating Supply</string>
-    <string name="change_1h">%Change (1h)</string>
+    <string name="change_1h">Change (1h)</string>
     <string name="percent">%</string>
-    <string name="change_24h">%Change (24h)</string>
-    <string name="change_7d">%Change (7d)</string>
+    <string name="change_24h">Change (24h)</string>
+    <string name="change_7d">Change (7d)</string>
     <string name="course">Course</string>
     <string name="_11111">11111</string>
+    <string name="_name">Name</string>
 </resources>

@@ -36,7 +36,7 @@ public class ItemActivity extends AppCompatActivity {
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.mipmap.back);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_back);
 
         textViewCourse.setText(" 1 " + getIntent().getStringExtra("symbol") + " = " + getIntent().getStringExtra("priceUsd") + " USD ");
         textViewRank.setText("Rank #" + getIntent().getStringExtra("rank"));

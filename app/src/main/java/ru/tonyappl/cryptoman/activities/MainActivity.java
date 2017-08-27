@@ -10,6 +10,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -36,11 +38,13 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProgressDialog loadingDialog;
     private List<Image> images;
+    private String currency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        currency = "USD";
 
         // Создаем сервис через который будет выполняться запрос
         courseService = ApiFactory.getRetrofitInstance().create(CourseService.class);
@@ -56,6 +60,31 @@ public class MainActivity extends AppCompatActivity {
         downloadCourses();
         initImages();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.menu_item_usd:
+                Toast.makeText(this, "USD", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menu_item_eur:
+                Toast.makeText(this, "EUR", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menu_item_rub:
+                Toast.makeText(this, "RUB", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     //Создаем вьюхолдер

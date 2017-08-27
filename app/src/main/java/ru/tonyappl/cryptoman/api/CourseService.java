@@ -9,4 +9,10 @@ import ru.tonyappl.cryptoman.models.Value;
 public interface CourseService {
     @GET("v1/ticker/")
     Call<List<Value>> getUSDCourses();
+
+    @GET("v1/ticker/?convert=EUR")
+    Call<List<Value>> getEURCourses();
+
+    @GET("v1/ticker/?convert=RUB")
+    Call<List<Value>> getRUBCourses();
 }

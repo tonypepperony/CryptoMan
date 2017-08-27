@@ -19,4 +19,7 @@
     <string name="course">Course</string>
     <string name="_11111">11111</string>
     <string name="_name">Name</string>
+    <string name="EUR">EUR</string>
+    <string name="USD">USD</string>
+    <string name="RUB">RUB</string>
 </resources>

@@ -38,7 +38,21 @@ public class ItemActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_back);
 
-        textViewCourse.setText(" 1 " + getIntent().getStringExtra("symbol") + " = " + getIntent().getStringExtra("priceUsd") + " USD ");
+        switch (MainActivity.getCurrency()) {
+            case "USD":
+                textViewCourse.setText(" 1 " + getIntent().getStringExtra("symbol") + " = " + getIntent().getStringExtra("priceUsd") + " USD ");
+                textViewMarketCap.setText("Market Cap $" + getIntent().getStringExtra("marketCapUsd"));
+                break;
+            case "EUR":
+                textViewCourse.setText(" 1 " + getIntent().getStringExtra("symbol") + " = " + getIntent().getStringExtra("priceEur") + " EUR ");
+                textViewMarketCap.setText("Market Cap €" + getIntent().getStringExtra("marketCapEur"));
+                break;
+            case "RUB":
+                textViewCourse.setText(" 1 " + getIntent().getStringExtra("symbol") + " = " + getIntent().getStringExtra("priceRub") + " RUB ");
+                textViewMarketCap.setText("Market Cap \u20BD" + getIntent().getStringExtra("marketCapRub"));
+                break;
+        }
+
         textViewRank.setText("Rank #" + getIntent().getStringExtra("rank"));
         textViewChange1h.setText(checkSign("percentChange1h") + getIntent().getStringExtra("percentChange1h") + "%");
         setColorTv("percentChange1h", textViewChange1h);
@@ -46,7 +60,6 @@ public class ItemActivity extends AppCompatActivity {
         setColorTv("percentChange24h", textViewChange24h);
         textViewChange7d.setText(checkSign("percentChange7d") + getIntent().getStringExtra("percentChange7d") + "%");
         setColorTv("percentChange7d", textViewChange7d);
-        textViewMarketCap.setText("Market Cap $" + getIntent().getStringExtra("marketCapUsd"));
         textViewCS.setText("Circulating Supply " + getIntent().getStringExtra("availableSupply") + " " + getIntent().getStringExtra("symbol"));
         textViewOnBTC.setText(getIntent().getStringExtra("symbol") + "-BTC = " + getIntent().getStringExtra("priceBtc") + " BTC");
         Picasso.with(ItemActivity.this).load(getIntent().getStringExtra("image")).into(imageViewItem);

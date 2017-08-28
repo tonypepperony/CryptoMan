@@ -11,11 +11,23 @@ public class Value {
     @SerializedName("price_usd")
     private String priceUsd;
 
+    @SerializedName("price_eur")
+    private String priceEur;
+
+    @SerializedName("price_rub")
+    private String priceRub;
+
     @SerializedName("price_btc")
     private String priceBtc;
 
     @SerializedName("market_cap_usd")
     private String marketCapUsd;
+
+    @SerializedName("market_cap_eur")
+    private String marketCapEur;
+
+    @SerializedName("market_cap_rub")
+    private String marketCapRub;
 
     @SerializedName("available_supply")
     private String availableSupply;
@@ -31,14 +43,18 @@ public class Value {
 
     private String imageUrl;
 
-    public Value(String id, String name, String symbol, String rank, String priceUsd, String priceBtc, String marketCapUsd, String availableSupply, String percentChange1h, String percentChange24h, String percentChange7d, String imageUrl) {
+    public Value(String id, String name, String symbol, String rank, String priceUsd, String priceEur, String priceRub, String priceBtc, String marketCapUsd, String marketCapEur, String marketCapRub, String availableSupply, String percentChange1h, String percentChange24h, String percentChange7d, String imageUrl) {
         this.id = id;
         this.name = name;
         this.symbol = symbol;
         this.rank = rank;
         this.priceUsd = priceUsd;
+        this.priceEur = priceEur;
+        this.priceRub = priceRub;
         this.priceBtc = priceBtc;
         this.marketCapUsd = marketCapUsd;
+        this.marketCapEur = marketCapEur;
+        this.marketCapRub = marketCapRub;
         this.availableSupply = availableSupply;
         this.percentChange1h = percentChange1h;
         this.percentChange24h = percentChange24h;
@@ -102,4 +118,19 @@ public class Value {
         return imageUrl;
     }
 
+    public String getPriceEur() {
+        return priceEur;
+    }
+
+    public String getPriceRub() {
+        return priceRub;
+    }
+
+    public String getMarketCapEur() {
+        return marketCapEur;
+    }
+
+    public String getMarketCapRub() {
+        return marketCapRub;
+    }
 }

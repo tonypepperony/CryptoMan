@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProgressDialog loadingDialog;
     private List<Image> images;
-    private String currency;
+    private static String currency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
 
-        downloadCourses();
+        downloadUSDCourses();
         initImages();
 
     }
@@ -75,12 +75,18 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
             case R.id.menu_item_usd:
                 Toast.makeText(this, "USD", Toast.LENGTH_SHORT).show();
+                setCurrency("USD");
+                downloadUSDCourses();
                 return true;
             case R.id.menu_item_eur:
                 Toast.makeText(this, "EUR", Toast.LENGTH_SHORT).show();
+                setCurrency("EUR");
+                downloadEURCourses();
                 return true;
             case R.id.menu_item_rub:
                 Toast.makeText(this, "RUB", Toast.LENGTH_SHORT).show();
+                setCurrency("RUB");
+                downloadRUBCourses();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -114,14 +120,29 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("name", values.get(position).getName());
                 intent.putExtra("rank", values.get(position).getRank());
                 intent.putExtra("symbol", values.get(position).getSymbol());
-                intent.putExtra("priceUsd", values.get(position).getPriceUsd());
                 intent.putExtra("priceBtc", values.get(position).getPriceBtc());
-                intent.putExtra("marketCapUsd", values.get(position).getMarketCapUsd());
                 intent.putExtra("availableSupply", values.get(position).getAvailableSupply());
                 intent.putExtra("percentChange1h", values.get(position).getPercentChange1h());
                 intent.putExtra("percentChange24h", values.get(position).getPercentChange24h());
                 intent.putExtra("percentChange7d", values.get(position).getPercentChange7d());
                 intent.putExtra("image", values.get(position).getImageUrl());
+
+                switch (currency) {
+                    case "USD":
+                        intent.putExtra("priceUsd", values.get(position).getPriceUsd());
+                        intent.putExtra("marketCapUsd", values.get(position).getMarketCapUsd());
+                        break;
+                    case "EUR":
+                        intent.putExtra("priceEur", values.get(position).getPriceEur());
+                        intent.putExtra("marketCapEur", values.get(position).getMarketCapEur());
+                        break;
+                    case "RUB":
+                        intent.putExtra("priceRub", values.get(position).getPriceRub());
+                        intent.putExtra("marketCapRub", values.get(position).getMarketCapRub());
+                        break;
+                }
+
+
                 startActivity(intent);
             }
         };
@@ -159,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void downloadCourses() {
+    private void downloadUSDCourses() {
         // Создаем экземпляр запроса со всем необходимыми настройками
         Call<List<Value>> call = courseService.getUSDCourses();
 
@@ -175,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     // Если в ответ нам пришел код 2xx, то отображаем содержимое запроса
                     values = response.body();
-                    fillCourses();
+                    fillCoursesUSD();
                 } else {
                     // Если пришел код ошибки, то обрабатываем её
                     Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
@@ -194,7 +215,77 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void fillCourses(){
+    private void downloadEURCourses() {
+        // Создаем экземпляр запроса со всем необходимыми настройками
+        Call<List<Value>> call = courseService.getEURCourses();
+
+        // Отображаем progress bar
+        loadingDialog.show();
+
+        // Выполняем запрос асинхронно
+        call.enqueue(new Callback<List<Value>>() {
+
+            // В случае если запрос выполнился успешно, то мы переходим в метод onResponse(...)
+            @Override
+            public void onResponse(@NonNull Call<List<Value>> call, @NonNull Response<List<Value>> response) {
+                if (response.isSuccessful()) {
+                    // Если в ответ нам пришел код 2xx, то отображаем содержимое запроса
+                    values = response.body();
+                    fillCoursesEUR();
+                } else {
+                    // Если пришел код ошибки, то обрабатываем её
+                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                }
+
+                // Скрываем progress bar
+                loadingDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<Value>> call, @NonNull Throwable t) {
+                Toast.makeText(MainActivity.this, "invalid downloading", Toast.LENGTH_SHORT).show();
+                Log.d("Error", t.getMessage());
+            }
+
+        });
+    }
+
+    private void downloadRUBCourses() {
+        // Создаем экземпляр запроса со всем необходимыми настройками
+        Call<List<Value>> call = courseService.getRUBCourses();
+
+        // Отображаем progress bar
+        loadingDialog.show();
+
+        // Выполняем запрос асинхронно
+        call.enqueue(new Callback<List<Value>>() {
+
+            // В случае если запрос выполнился успешно, то мы переходим в метод onResponse(...)
+            @Override
+            public void onResponse(@NonNull Call<List<Value>> call, @NonNull Response<List<Value>> response) {
+                if (response.isSuccessful()) {
+                    // Если в ответ нам пришел код 2xx, то отображаем содержимое запроса
+                    values = response.body();
+                    fillCoursesRUB();
+                } else {
+                    // Если пришел код ошибки, то обрабатываем её
+                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                }
+
+                // Скрываем progress bar
+                loadingDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<Value>> call, @NonNull Throwable t) {
+                Toast.makeText(MainActivity.this, "invalid downloading", Toast.LENGTH_SHORT).show();
+                Log.d("Error", t.getMessage());
+            }
+
+        });
+    }
+
+    private void fillCoursesUSD(){
         List<Value> resultValues = new ArrayList<>();
 
         //Выгрузка всех
@@ -206,7 +297,29 @@ public class MainActivity extends AppCompatActivity {
 
         //Выгрузка топ 50
         for (int i = 0; i < 50; i++) {
-            resultValues.add(new Value(values.get(i).getId(), values.get(i).getName(), values.get(i).getSymbol(), values.get(i).getRank(), values.get(i).getPriceUsd(), values.get(i).getPriceBtc(), values.get(i).getMarketCapUsd(), values.get(i).getAvailableSupply(), values.get(i).getPercentChange1h(), values.get(i).getPercentChange24h(), values.get(i).getPercentChange7d(), getImgURL(values.get(i).getSymbol())));
+            resultValues.add(new Value(values.get(i).getId(), values.get(i).getName(), values.get(i).getSymbol(), values.get(i).getRank(), values.get(i).getPriceUsd(), null, null, values.get(i).getPriceBtc(), values.get(i).getMarketCapUsd(), null, null, values.get(i).getAvailableSupply(), values.get(i).getPercentChange1h(), values.get(i).getPercentChange24h(), values.get(i).getPercentChange7d(), getImgURL(values.get(i).getSymbol())));
+            final MainActivity.Adapter adapter = new MainActivity.Adapter(resultValues);
+            recyclerView.setAdapter(adapter);
+        }
+
+    }
+
+    private void fillCoursesEUR(){
+        List<Value> resultValues = new ArrayList<>();
+
+        for (int i = 0; i < 50; i++) {
+            resultValues.add(new Value(values.get(i).getId(), values.get(i).getName(), values.get(i).getSymbol(), values.get(i).getRank(), null, values.get(i).getPriceEur(), null, values.get(i).getPriceBtc(), null, values.get(i).getMarketCapEur(), null, values.get(i).getAvailableSupply(), values.get(i).getPercentChange1h(), values.get(i).getPercentChange24h(), values.get(i).getPercentChange7d(), getImgURL(values.get(i).getSymbol())));
+            final MainActivity.Adapter adapter = new MainActivity.Adapter(resultValues);
+            recyclerView.setAdapter(adapter);
+        }
+
+    }
+
+    private void fillCoursesRUB(){
+        List<Value> resultValues = new ArrayList<>();
+
+        for (int i = 0; i < 50; i++) {
+            resultValues.add(new Value(values.get(i).getId(), values.get(i).getName(), values.get(i).getSymbol(), values.get(i).getRank(), null, null, values.get(i).getPriceRub(), values.get(i).getPriceBtc(), null, null, values.get(i).getMarketCapRub(), values.get(i).getAvailableSupply(), values.get(i).getPercentChange1h(), values.get(i).getPercentChange24h(), values.get(i).getPercentChange7d(), getImgURL(values.get(i).getSymbol())));
             final MainActivity.Adapter adapter = new MainActivity.Adapter(resultValues);
             recyclerView.setAdapter(adapter);
         }
@@ -228,7 +341,6 @@ public class MainActivity extends AppCompatActivity {
         images.add(new Image("OMG", "/media/1383814/omg.png"));
         images.add(new Image("BCC", "/media/9350709/bccoin1.png"));
         images.add(new Image("QTUM", "/media/1383382/qtum.png"));
-        images.add(new Image("STRAT", "/media/351303/strat.png"));
         images.add(new Image("WAVES", "/media/350884/waves_1.png"));
         images.add(new Image("ZEC", "/media/351360/zec.png"));
         images.add(new Image("LSK", "/media/352246/lsk.png"));
@@ -274,8 +386,18 @@ public class MainActivity extends AppCompatActivity {
                 url = baseUrl + images.get(i).getUrl();
             } else if (name.equals("MIOTA")){
                 url = "https://satoshiwatch.com/wp-content/uploads/2016/10/2.jpg";
+            } else if (name.equals("STRAT")){
+                url = "https://cryptocoingrowth.com/wp-content/uploads/2017/06/Stratis_Logo_x400.png";
             }
         }
         return url;
+    }
+
+    public static String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }

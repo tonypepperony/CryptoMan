@@ -386,6 +386,8 @@ public class MainActivity extends AppCompatActivity {
                 url = baseUrl + images.get(i).getUrl();
             } else if (name.equals("MIOTA")){
                 url = "https://satoshiwatch.com/wp-content/uploads/2016/10/2.jpg";
+            } else if (name.equals("ETH")){
+                url = "http://files.coinmarketcap.com.s3-website-us-east-1.amazonaws.com/static/img/coins/200x200/ethereum.png";
             } else if (name.equals("STRAT")){
                 url = "https://cryptocoingrowth.com/wp-content/uploads/2017/06/Stratis_Logo_x400.png";
             } else if (name.equals("ADA")){

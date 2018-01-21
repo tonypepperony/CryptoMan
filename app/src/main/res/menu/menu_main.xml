@@ -4,17 +4,20 @@
     tools:context=".MainActivity">
     <item
         android:id="@+id/menu_item_usd"
+        android:icon="@drawable/icon_usd"
         android:orderInCategory="100"
         android:title="@string/USD"
-        app:showAsAction="never"/>
+        app:showAsAction="withText"/>
     <item
         android:id="@+id/menu_item_eur"
         android:orderInCategory="100"
+        android:icon="@drawable/icon_eur"
         android:title="@string/EUR"
-        app:showAsAction="never"/>
+        app:showAsAction="withText"/>
     <item
         android:id="@+id/menu_item_rub"
         android:orderInCategory="100"
+        android:icon="@drawable/icon_rub"
         android:title="@string/RUB"
-        app:showAsAction="never"/>
+        app:showAsAction="withText"/>
 </menu>

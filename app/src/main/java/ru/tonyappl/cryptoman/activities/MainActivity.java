@@ -296,7 +296,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
         //Выгрузка топ 50
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 30; i++) {
             resultValues.add(new Value(values.get(i).getId(), values.get(i).getName(), values.get(i).getSymbol(), values.get(i).getRank(), values.get(i).getPriceUsd(), null, null, values.get(i).getPriceBtc(), values.get(i).getMarketCapUsd(), null, null, values.get(i).getAvailableSupply(), values.get(i).getPercentChange1h(), values.get(i).getPercentChange24h(), values.get(i).getPercentChange7d(), getImgURL(values.get(i).getSymbol())));
             final MainActivity.Adapter adapter = new MainActivity.Adapter(resultValues);
             recyclerView.setAdapter(adapter);
@@ -307,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
     private void fillCoursesEUR(){
         List<Value> resultValues = new ArrayList<>();
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 30; i++) {
             resultValues.add(new Value(values.get(i).getId(), values.get(i).getName(), values.get(i).getSymbol(), values.get(i).getRank(), null, values.get(i).getPriceEur(), null, values.get(i).getPriceBtc(), null, values.get(i).getMarketCapEur(), null, values.get(i).getAvailableSupply(), values.get(i).getPercentChange1h(), values.get(i).getPercentChange24h(), values.get(i).getPercentChange7d(), getImgURL(values.get(i).getSymbol())));
             final MainActivity.Adapter adapter = new MainActivity.Adapter(resultValues);
             recyclerView.setAdapter(adapter);
@@ -318,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
     private void fillCoursesRUB(){
         List<Value> resultValues = new ArrayList<>();
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 30; i++) {
             resultValues.add(new Value(values.get(i).getId(), values.get(i).getName(), values.get(i).getSymbol(), values.get(i).getRank(), null, null, values.get(i).getPriceRub(), values.get(i).getPriceBtc(), null, null, values.get(i).getMarketCapRub(), values.get(i).getAvailableSupply(), values.get(i).getPercentChange1h(), values.get(i).getPercentChange24h(), values.get(i).getPercentChange7d(), getImgURL(values.get(i).getSymbol())));
             final MainActivity.Adapter adapter = new MainActivity.Adapter(resultValues);
             recyclerView.setAdapter(adapter);
@@ -388,6 +388,36 @@ public class MainActivity extends AppCompatActivity {
                 url = "https://satoshiwatch.com/wp-content/uploads/2016/10/2.jpg";
             } else if (name.equals("STRAT")){
                 url = "https://cryptocoingrowth.com/wp-content/uploads/2017/06/Stratis_Logo_x400.png";
+            } else if (name.equals("ADA")){
+                url = "https://pbs.twimg.com/profile_images/880103086735446016/ZE8LxNBf_400x400.jpg";
+            } else if (name.equals("TRX")){
+                url = "https://prostocoin.com/assets/coins/trx.png";
+            } else if (name.equals("BTG")){
+                url = "https://altcoin.info/images/coins/btg.png";
+            } else if (name.equals("ICX")){
+                url = "http://files.coinmarketcap.com.s3-website-us-east-1.amazonaws.com/static/img/coins/200x200/icon.png";
+            } else if (name.equals("XRB")){
+                url = "http://files.coinmarketcap.com.s3-website-us-east-1.amazonaws.com/static/img/coins/200x200/raiblocks.png";
+            } else if (name.equals("VEN")){
+                url = "https://lh3.googleusercontent.com/r4TvI6_EkL3BuIBiMbpUDryi8OfqHVQ9mkG50oLdb6zrZS1wJMMORqcrgsNmmj2LGCY=w300";
+            } else if (name.equals("XVG")){
+                url = "https://avatars1.githubusercontent.com/u/16771005?v=3";
+            } else if (name.equals("KCS")){
+                url = "https://pbs.twimg.com/profile_images/910388414180081665/rBe58a2L.jpg";
+            } else if (name.equals("ETN")){
+                url = "https://lh3.googleusercontent.com/qEdwETyoFNYQwJv_NNWMRCrYq9xOKifLPFMnAQaPQVj1w2O-vxutmD7ucAJ5Pv5hvA=w300";
+            } else if (name.equals("WTC")){
+                url = "https://steemit-production-imageproxy-upload.s3.amazonaws.com/DQmbv3yr7tVchXmMDL7WscTww1pQ7VjLVptNGr1hnoQeFwG";
+            } else if (name.equals("DRGN")){
+                url = "https://dragonchain.com/assets/images/dragon.png";
+            } else if (name.equals("LRC")){
+                url = "http://files.coinmarketcap.com.s3-website-us-east-1.amazonaws.com/static/img/coins/200x200/loopring.png";
+            } else if (name.equals("DCN")){
+                url = "https://lh3.googleusercontent.com/oW8LGDlNCOIxlu8MoRNTOYe2oke4c_64BZzhk3RbbRbOA1uLzA92t4XD-UamtzpRFiC4=w300";
+            } else if (name.equals("SALT")){
+                url = "http://files.coinmarketcap.com.s3-website-us-east-1.amazonaws.com/static/img/coins/200x200/salt.png";
+            } else if (name.equals("MKR")){
+                url = "https://avatars3.githubusercontent.com/u/12523025?s=200&v=4";
             }
         }
         return url;
